@@ -27,4 +27,10 @@ end
 
 group :production do
   gem 'pg'
+  gem 'thin'
+  gem 'puma'
+  gem 'reel'
+  gem 'http'
+  gem 'webrick'
+  gem 'falcon'
 end

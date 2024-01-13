@@ -17,36 +17,122 @@ GEM
       minitest (>= 5.1)
       mutex_m
       tzinfo (~> 2.0)
+    addressable (2.8.6)
+      public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
+    async (1.31.0)
+      console (~> 1.10)
+      nio4r (~> 2.3)
+      timers (~> 4.1)
+    async-container (0.16.12)
+      async
+      async-io
+    async-http (0.61.0)
+      async (>= 1.25)
+      async-io (>= 1.28)
+      async-pool (>= 0.2)
+      protocol-http (~> 0.25.0)
+      protocol-http1 (~> 0.16.0)
+      protocol-http2 (~> 0.15.0)
+      traces (>= 0.10.0)
+    async-http-cache (0.4.3)
+      async-http (~> 0.56)
+    async-io (1.38.1)
+      async
+    async-pool (0.4.0)
+      async (>= 1.25)
     base64 (0.2.0)
     bigdecimal (3.1.5)
+    build-environment (1.13.0)
+    celluloid (0.18.0)
+      timers (~> 4)
+    celluloid-io (0.17.3)
+      celluloid (>= 0.17.2)
+      nio4r (>= 1.1)
+      timers (>= 4.1.1)
     coderay (1.1.3)
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
+    console (1.23.3)
+      fiber-annotation
+      fiber-local
+    daemons (1.4.1)
     diff-lcs (1.5.0)
+    domain_name (0.6.20240107)
     dotenv (2.8.1)
     drb (2.2.0)
       ruby2_keywords
+    eventmachine (1.2.7)
+    falcon (0.42.3)
+      async
+      async-container (~> 0.16.0)
+      async-http (~> 0.57)
+      async-http-cache (~> 0.4.0)
+      async-io (~> 1.22)
+      build-environment (~> 1.13)
+      bundler
+      localhost (~> 1.1)
+      openssl (~> 3.0)
+      process-metrics (~> 0.2.0)
+      protocol-rack (~> 0.1)
+      samovar (~> 2.1)
     ffi (1.16.3)
+    ffi-compiler (1.0.1)
+      ffi (>= 1.0.0)
+      rake
+    fiber-annotation (0.2.0)
+    fiber-local (1.0.0)
     foreman (0.87.2)
+    http (5.1.1)
+      addressable (~> 2.8)
+      http-cookie (~> 1.0)
+      http-form_data (~> 2.2)
+      llhttp-ffi (~> 0.4.0)
+    http-cookie (1.0.5)
+      domain_name (~> 0.5)
+    http-form_data (2.3.0)
+    http_parser.rb (0.8.0)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     json (2.7.1)
     language_server-protocol (3.17.0.3)
+    llhttp-ffi (0.4.0)
+      ffi-compiler (~> 1.0)
+      rake (~> 13.0)
+    localhost (1.1.10)
+    mapping (1.1.1)
     method_source (1.0.0)
     minitest (5.21.1)
     multi_json (1.15.0)
     mustermann (3.0.0)
       ruby2_keywords (~> 0.0.1)
     mutex_m (0.2.0)
+    nio4r (2.7.0)
+    openssl (3.2.0)
     parallel (1.24.0)
     parser (3.3.0.3)
       ast (~> 2.4.1)
       racc
     pg (1.5.4)
+    process-metrics (0.2.1)
+      console (~> 1.8)
+      samovar (~> 2.1)
+    protocol-hpack (1.4.2)
+    protocol-http (0.25.0)
+    protocol-http1 (0.16.1)
+      protocol-http (~> 0.22)
+    protocol-http2 (0.15.1)
+      protocol-hpack (~> 1.4)
+      protocol-http (~> 0.18)
+    protocol-rack (0.4.1)
+      protocol-http (~> 0.23)
+      rack (>= 1.0)
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
+    public_suffix (5.0.4)
+    puma (6.4.2)
+      nio4r (~> 2.0)
     racc (1.7.3)
     rack (2.2.8)
     rack-protection (3.2.0)
@@ -56,6 +142,12 @@ GEM
       rack (>= 1.3)
     rainbow (3.1.1)
     rake (13.1.0)
+    reel (0.6.1)
+      celluloid (>= 0.15.1)
+      celluloid-io (>= 0.15.0)
+      http (>= 0.6.0.pre)
+      http_parser.rb (>= 0.6.0)
+      websocket-driver (>= 0.5.1)
     regexp_parser (2.9.0)
     rexml (3.2.6)
     rspec (3.12.0)
@@ -86,6 +178,9 @@ GEM
       parser (>= 3.2.1.0)
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
+    samovar (2.2.0)
+      console (~> 1.0)
+      mapping (~> 1.0)
     sassc (2.4.0)
       ffi (~> 1.9)
     sinatra (3.2.0)
@@ -105,23 +200,37 @@ GEM
     sinatra-static-assets (1.0.4)
       sinatra (>= 1.1.0)
     sqlite3 (1.7.0-x86_64-linux)
+    thin (1.8.2)
+      daemons (~> 1.0, >= 1.0.9)
+      eventmachine (~> 1.0, >= 1.0.4)
+      rack (>= 1, < 3)
     tilt (2.3.0)
     timeout (0.4.1)
+    timers (4.3.5)
+    traces (0.11.1)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.5.0)
+    webrick (1.8.1)
+    websocket-driver (0.7.6)
+      websocket-extensions (>= 0.1.0)
+    websocket-extensions (0.1.5)
 
 PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
   dotenv
+  falcon
   foreman
+  http
   json
   pg
   pry
+  puma
   rack-test
   rake
+  reel
   rspec
   rubocop
   sassc
@@ -130,6 +239,8 @@ DEPENDENCIES
   sinatra-contrib
   sinatra-static-assets
   sqlite3 (~> 1.3, >= 1.3.11)
+  thin
+  webrick
 
 BUNDLED WITH
    2.3.7
