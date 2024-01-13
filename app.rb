@@ -27,5 +27,5 @@ class App < Sinatra::Base
     "Hello World"
   end
 
-  run! if app_file == $0
+#   run! if app_file == $0 # Uncomment if run app with ruby app.rb
 end
